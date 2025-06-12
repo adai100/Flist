@@ -32,10 +32,10 @@ export default defineUserConfig({
   // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
   theme: FileList([
     {
-        mountPath: "/测试",
+        mountPath: "/armbian",
         analysis: githubReposAnalysis({
-          user: "adai100",
-          repository: "adai100.github.io",
+          user: "ophub",
+          repository: "amlogic-s9xxx-armbian",
         }),
         downProxy: cloudflarePagesDownProxy(),
       },
@@ -54,6 +54,22 @@ export default defineUserConfig({
           repository: "123pan",
         }),
         downProxy: cloudflarePagesDownProxy(),
+      },
+      {
+        // 挂载路径
+        mountPath: "/KnapsackToGo4下载",
+        // 文件解析器，这里使用githubReleasesFilesAnalysis,可以解析github的release文件
+        analysis: githubReleasesFilesAnalysis({
+          // 仓库所有者的用户名
+          user: "ophub",
+          // 仓库所有者的仓库名
+          repository: "amlogic-s9xxx-armbian",
+          // github 授权 Token, process.env.xxx  xxx 是环境变量名称。可以通过设置 githubToken 环境变量来配置
+          authorizationToken: process.env.githubToken,
+          // 分页大小，不懂得话就当作取最新的多少个标签吧。
+          per_page: 10,
+        }),
+        downProxy: cloudflarePagesDownProxy(),        
       },
 
   ]),
