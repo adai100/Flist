@@ -64,12 +64,24 @@ export default defineUserConfig({
             downProxy: cloudflarePagesDownProxy(),
         },
         {
-            mountPath: "/armbian",
+            mountPath: "/Armbian",
             analysis: githubReposAnalysis({
-                user: "ophub",
-                repository: "amlogic-s9xxx-armbian",
+              user: "ophub",
+              repository: "amlogic-s9xxx-armbian",
+              // rootPath: string, //根路径,挂载仓库的路径
+              // authorizationToken: string, //github token
+              // ref: string, //github分支
+              maxDeep: 5, //最大深度,默认10
+              // hideReadme: true, //隐藏README.MD文件
             }),
-            downProxy: cloudflarePagesDownProxy(),
-        },
+          },
+        // {
+        //     mountPath: "/armbian",
+        //     analysis: githubReposAnalysis({
+        //         user: "ophub",
+        //         repository: "amlogic-s9xxx-armbian",
+        //     }),
+        //     downProxy: cloudflarePagesDownProxy(),
+        // },
     ]),
 });
