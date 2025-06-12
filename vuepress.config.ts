@@ -31,14 +31,14 @@ export default defineUserConfig({
   shouldPrefetch: true,
   // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
   theme: FileList([
-    {
-        mountPath: "/armbian",
-        analysis: githubReposAnalysis({
-          user: "ophub",
-          repository: "amlogic-s9xxx-armbian",
-        }),
-        downProxy: cloudflarePagesDownProxy(),
-      },
+    // {
+    //     mountPath: "/armbian",
+    //     analysis: githubReposAnalysis({
+    //       user: "ophub",
+    //       repository: "amlogic-s9xxx-armbian",
+    //     }),
+    //     downProxy: cloudflarePagesDownProxy(),
+    //   },
     {
       mountPath: "/pan123/123pan1",
       analysis: githubReposAnalysis({
