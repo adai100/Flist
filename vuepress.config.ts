@@ -32,13 +32,21 @@ export default defineUserConfig({
   // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
   theme: FileList([
     {
-      mountPath: "/123pan",
+      mountPath: "/pan123/123pan1",
       analysis: githubReposAnalysis({
         user: "tosasitill",
         repository: "123pan",
       }),
       downProxy: cloudflarePagesDownProxy(),
     },
+    {
+        mountPath: "/pan123/123pan2",
+        analysis: githubReposAnalysis({
+          user: "qq54288",
+          repository: "123pan",
+        }),
+        downProxy: cloudflarePagesDownProxy(),
+      },
     {
       // 挂载路径
       mountPath: "/KnapsackToGo4下载",
