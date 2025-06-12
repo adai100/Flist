@@ -70,8 +70,8 @@ export default defineUserConfig({
               repository: "amlogic-s9xxx-armbian",
               // rootPath: string, //根路径,挂载仓库的路径
               // authorizationToken: string, //github token
-              // ref: string, //github分支
-              maxDeep: 2, //最大深度,默认10
+              ref: "main", //github分支
+              maxDeep: 3, //最大深度,默认10
               // hideReadme: true, //隐藏README.MD文件
             }),
           },
