@@ -56,7 +56,7 @@ export default defineUserConfig({
         downProxy: cloudflarePagesDownProxy(),
       },
       {
-        mountPath: "/kodi/sking",
+        mountPath: "/kodi/皮肤",        
         analysis: githubReposAnalysis({
           user: "linknetx",
           repository: "skin.estuary-extra",
