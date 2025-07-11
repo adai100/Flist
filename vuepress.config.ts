@@ -52,7 +52,7 @@ export default defineUserConfig({
             // 这里使用 fileUrlTreeAnalysis 文件放到对应的文件路径中
             analysis: fileUrlTreeAnalysis({
                 "/xiaoya_data.zip":
-                    "https://github.com/xiaoyaDev/data/blob/main/index.zip",
+                    "https://github.com/xiaoyaDev/data/raw/refs/heads/main/index.zip",
                }),
             downProxy: cloudflarePagesDownProxy(), //如果文件树地址下载比较慢，也可以配置代理
         },
