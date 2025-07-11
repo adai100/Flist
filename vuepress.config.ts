@@ -15,7 +15,6 @@ import { giteeReposAnalysis } from "./src/node/analysis/giteeReposAnalysis/index
  * 站点配置文件，没有注释的选项如果不知道有什么作用不建议修改，有注释的选项可以根据注释修改
  * */
 export default defineUserConfig({
-<<<<<<< HEAD
     bundler: viteBundler(),
     pagePatterns: [],
     lang: "zh-CN",
@@ -92,16 +91,16 @@ export default defineUserConfig({
               // hideReadme: true, //隐藏README.MD文件
             }),
           },
-        // {
-        //     mountPath: "/armbian",
-        //     analysis: githubReposAnalysis({
-        //         user: "ophub",
-        //         repository: "amlogic-s9xxx-armbian",
-        //     }),
-        //     downProxy: cloudflarePagesDownProxy(),
-        // },
+        {
+            mountPath: "/armbian",
+            analysis: githubReposAnalysis({
+                user: "ophub",
+                repository: "amlogic-s9xxx-armbian",
+            }),
+            downProxy: cloudflarePagesDownProxy(),
+        },
     ]),
-=======
+
   bundler: viteBundler(),
   pagePatterns: [],
   lang: "zh-CN",
@@ -151,5 +150,4 @@ export default defineUserConfig({
         downProxy: cloudflarePagesDownProxy(),
       },
   ]),
->>>>>>> 838bdc185b99a0ce4bfd85728e213d359c1af5cf
 });
