@@ -32,7 +32,7 @@ export default defineUserConfig({
     // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
     theme: FileList([
         {
-            mountPath: "/pan123/123pan_1",
+            mountPath: "/pan123/123pan1",
             analysis: githubReposAnalysis({
                 user: "tosasitill",
                 repository: "123pan",
@@ -40,7 +40,7 @@ export default defineUserConfig({
             downProxy: cloudflarePagesDownProxy(),
         },
         {
-            mountPath: "/pan123/123pan_2",
+            mountPath: "/pan123/123pan2",
             analysis: githubReposAnalysis({
                 user: "qq54288",
                 repository: "123pan",
@@ -49,105 +49,64 @@ export default defineUserConfig({
         },
         {
             // 挂载路径
-            mountPath: "/Armbian下载",
+            mountPath: "/KnapsackToGo4下载",
             // 文件解析器，这里使用githubReleasesFilesAnalysis,可以解析github的release文件
             analysis: githubReleasesFilesAnalysis({
                 // 仓库所有者的用户名
-                user: "ophub",
+                user: "jianjianai",
                 // 仓库所有者的仓库名
-                repository: "amlogic-s9xxx-armbian",
+                repository: "KnapsackToGo4",
                 // github 授权 Token, process.env.xxx  xxx 是环境变量名称。可以通过设置 githubToken 环境变量来配置
                 authorizationToken: process.env.githubToken,
                 // 分页大小，不懂得话就当作取最新的多少个标签吧。
                 per_page: 10,
             }),
-            downProxy: cloudflarePagesDownProxy(),
         },
         {
-            // 挂载路径
-            mountPath: "/小雅data",
-            // 文件解析器，这里使用githubReleasesFilesAnalysis,可以解析github的release文件
+            mountPath: "/",
             analysis: githubReleasesFilesAnalysis({
-                // 仓库所有者的用户名
-                user: "xiaoyaDev",
-                // 仓库所有者的仓库名
-                repository: "xiaoyaDev",
-                // github 授权 Token, process.env.xxx  xxx 是环境变量名称。可以通过设置 githubToken 环境变量来配置
+                user: "jianjianai",
+                repository: "FList",
                 authorizationToken: process.env.githubToken,
-                // 分页大小，不懂得话就当作取最新的多少个标签吧。
-                per_page: 10,
             }),
+            // 下载代理配置,支持多个平台，参考:https://jjaw.cn/2024/8/3/flist-config-porxy/
+            // 这个是为了解决github的国内下载慢的问题，和跨域问题，建议配置，不然pdf，txt，md等文件因为跨域无法预览
+            // 如果你使用的不是 cloudflare Pages 部署需要删掉这一行，因为如果不是cloudflare Pages部署，这个代理是无法正常工作的
             downProxy: cloudflarePagesDownProxy(),
         },
         {
-            mountPath: "/Armbian",
-            analysis: githubReposAnalysis({
-              user: "ophub",
-              repository: "amlogic-s9xxx-armbian",
-              // rootPath: string, //根路径,挂载仓库的路径
-              // authorizationToken: string, //github token
-              ref: "main", //github分支
-              maxDeep: 3, //最大深度,默认10
-              // hideReadme: true, //隐藏README.MD文件
-            }),
-          },
+            mountPath: "/xiaoya",
+            // 这里使用 fileUrlTreeAnalysis 文件放到对应的文件路径中
+            analysis: fileUrlTreeAnalysis({
+                "/xiaoya_data":
+                    "https://github.com/xiaoyaDev/data/blob/main/index.zip",
+               }),
+            downProxy: cloudflarePagesDownProxy(), //如果文件树地址下载比较慢，也可以配置代理
+        },
         {
-            mountPath: "/armbian",
+            mountPath: "/gitee测试/发行版",
+            analysis: giteeReleasesFilesAnalysis({
+                user: "jja8",
+                repository: "flist-test",
+                direction: "desc",
+            }),
+        },
+        {
+            mountPath: "/gitee测试/仓库",
+            analysis: giteeReposAnalysis({
+                user: "jja8",
+                repository: "flist-test",
+            }),
+        },
+        {
+            mountPath: "/ProgrammingVTuberLogos",
             analysis: githubReposAnalysis({
-                user: "ophub",
-                repository: "amlogic-s9xxx-armbian",
+                user: "Aikoyori",
+                repository: "ProgrammingVTuberLogos",
+                authorizationToken: process.env.githubToken,
             }),
             downProxy: cloudflarePagesDownProxy(),
         },
+        // ... 可以配置多个挂载路径和仓库，以此类推
     ]),
-
-  bundler: viteBundler(),
-  pagePatterns: [],
-  lang: "zh-CN",
-  public: `./public`,
-  // 网站标题，标题颜色可在 src/client/css/main.css 中修改
-  title: "FList",
-  // 网站的简介，有助于搜索引擎收录
-  description:
-    "FList - 将 GitHub Releases 以类似网盘的形式展示在网页上，方便用户下载开源软件。 支持视频、音频、图片、PDF 等文件的在线预览。",
-  // 页面 <head> 标签内添加的额外标签。 不要修改/logo.png可以替换掉这个文件，删除logo.png会导致构建出错。
-  head: [["link", { rel: "icon", href: "/logo.png" }]],
-  // 页面预加载，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
-  // 简单来说就是，如果你的文件不多就可以打开这个选项，可以大大提高页面切换的速度，如果文件非常多就不建议打开。建议超过100个文件就不要打开这个选项。
-  shouldPrefetch: true,
-  // 主题配置 FileList 是 vuepress 的一个主题，文件展示的功能全部由这个主题提供。
-  theme: FileList([
-    {
-        mountPath: "/测试",
-        analysis: githubReposAnalysis({
-          user: "adai100",
-          repository: "adai100.github.io",
-        }),
-        downProxy: cloudflarePagesDownProxy(),
-      },
-    {
-      mountPath: "/pan123/123pan1",
-      analysis: githubReposAnalysis({
-        user: "tosasitill",
-        repository: "123pan",
-      }),
-      downProxy: cloudflarePagesDownProxy(),
-    },
-    {
-        mountPath: "/pan123/123pan2",
-        analysis: githubReposAnalysis({
-          user: "qq54288",
-          repository: "123pan",
-        }),
-        downProxy: cloudflarePagesDownProxy(),
-      },
-      {
-        mountPath: "/kodi/皮肤",        
-        analysis: githubReposAnalysis({
-          user: "linknetx",
-          repository: "skin.estuary-extra",
-        }),
-        downProxy: cloudflarePagesDownProxy(),
-      },
-  ]),
 });
