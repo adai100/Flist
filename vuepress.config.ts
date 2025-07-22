@@ -65,6 +65,15 @@ export default defineUserConfig({
             }),
             downProxy: cloudflarePagesDownProxy(),
         },
+        {
+            mountPath: "/pan123data",
+            // 这里使用 fileUrlTreeAnalysis 文件放到对应的文件路径中
+            analysis: fileUrlTreeAnalysis({
+                "/pan123.db":
+                    "https://github.com/realcwj/123Pan-Unlimited-Share/releases/download/database/PAN123DATABASE.20250705.db",
+               }),
+            downProxy: cloudflarePagesDownProxy(), //如果文件树地址下载比较慢，也可以配置代理
+        },
         // ... 可以配置多个挂载路径和仓库，以此类推
     ]),
 });
